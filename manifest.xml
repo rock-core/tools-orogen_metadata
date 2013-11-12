@@ -1,0 +1,12 @@
+<package>
+  <description brief="metadata">
+    This pacakges adds metadata support to orogen projects.
+    This will enable projcets to add to the project and/or ports/properties
+    generic information like ranges (used by vizkit) or default values
+  </description>
+  <author>Matthias Goldhoorn/ matthias@goldhoorn.eu</author>
+  <license>LGPLv2</license>
+  <url>dummy-url</url>
+  <logo>dummy-logo-url</logo>
+  <!--depend package="base/cmake" /-->
+</package>

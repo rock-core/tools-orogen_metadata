@@ -12,7 +12,7 @@ module Orocos
         attr_reader :input_ports
         # @return [Hash<String,Typelib::Metadata>]
         attr_reader :output_ports
-        
+
         def initialize
             @metadata = Typelib::MetaData.new
             @properties = Hash.new
@@ -22,7 +22,6 @@ module Orocos
 
         def to_s
             s = String.new
-            #s << "Metadata properties: #{properties.size} input_ports: #{input_ports.size} output_porrs: #{output_ports.size} \n"
             s << "Generic Metadata\n"
             metadata.each do |key,value|
                 s << "\t#{key.to_s} = #{value.to_s}\n"

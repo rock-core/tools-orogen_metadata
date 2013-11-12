@@ -1,9 +1,8 @@
-#ifndef _WRAPPERS_HASH_MAP_
-#define _WRAPPERS_HASH_MAP_
+#ifndef _OROGEN_METADATA_ 
+#define _OROGEN_METADATA_
 
 #include <vector>
 #include <string>
-#include <map>
 
 namespace metadata {
     struct KeyValue
@@ -30,20 +29,5 @@ namespace metadata {
         std::vector<InterfaceObject> output_ports;
     };
 }
-/*
-namespace wrappers{
-    struct HashMap{
-        struct StringPair{
-            StringPair(){}
-            StringPair(const std::string &a, const std::string &b):a(a),b(b){}
-
-            std::string a;
-            std::string b;
-        };
-
-        std::vector<StringPair> data;
-    };
-};
-*/
 
 #endif

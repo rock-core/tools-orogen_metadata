@@ -24,7 +24,7 @@ Typelib.convert_to_ruby '/metadata/Component', Orocos::MetaData do |data|
         value.metadata.each do |value2|
             v.set(value2.key,value2.value)
         end
-        res.input_ports[value.name.to_s] = v
+        res.properties[value.name.to_s] = v
     end
     res
 end

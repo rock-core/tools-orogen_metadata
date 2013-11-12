@@ -1,13 +1,34 @@
 
-
+require 'rorocos_ext'
 require "metadata_types"
 
 module Orocos
+    class InputPort
+        def default_value
+            if task.metadata.input_ports[name]
+                v = task.metadata.input_ports[name].get("default")
+                return v[0] if v
+            end
+            nil
+        end
+    end
+
+    class OutputPort
+        def default_value
+            if task.metadata.output_ports[name]
+                v = task.metadata.output_ports[name].get("default")
+                return v[0] if v
+            end
+            nil
+        end
+    end
+
     module Spec
         class TaskContext
             attr_accessor :metadata
 
             def metadata_support
+                project.using_library "orogen_metadata"
                 project.import_types_from "metadata/Metadata.hpp"
                 register_extension(Orocos::Spec::MetaDataPlugin.new)
             end

@@ -16,7 +16,7 @@ namespace metadata {
     struct InterfaceObject
     {
         InterfaceObject(){}
-        InterfaceObject(const std::string &name){}
+        InterfaceObject(const std::string &name):name(name){}
         std::string name;
         std::vector<KeyValue> metadata;
     };

@@ -20,31 +20,59 @@ module Orocos
             @output_ports = Hash.new
         end
 
-        def to_s
-            s = String.new
-            s << "Generic Metadata\n"
-            metadata.each do |key,value|
-                s << "\t#{key.to_s} = #{value.to_s}\n"
+        def pretty_print(pp)
+            pp.text "Generic Metadata"
+            pp.nest(2) do
+                metadata.each do |key,value|
+                    pp.breakable
+                    pp.text "#{key} = #{value}"
+                end
             end
-            s << "Properties Metadata\n"
+
+            pp.breakable
+            pp.text "Properties Metadata"
             properties.each do |k,v|
-                v.each do |key,value|
-                    s << "\t#{k.to_s}[#{key.to_s}] = #{value.to_s}\n"
+                pp.nest(2) do
+                    pp.breakable
+                    pp.text k
+                    pp.nest(2) do
+                        pp.breakable
+                        v.each do |key,value|
+                            pp.text "#{key} = #{value}"
+                        end
+                    end
                 end
             end
-            s << "Input Port Metadata\n"
+
+            pp.breakable
+            pp.text "Input Ports Metadata"
             input_ports.each do |k,v|
-                v.each do |key,value|
-                    s << "\t#{k.to_s}[#{key.to_s}] = #{value.to_s}\n"
+                pp.nest(2) do
+                    pp.breakable
+                    pp.text k
+                    pp.nest(2) do
+                        pp.breakable
+                        v.each do |key,value|
+                            pp.text "#{key} = #{value}"
+                        end
+                    end
                 end
             end
-            s << "Output Port Metadata\n"
+
+            pp.breakable
+            pp.text "Output Ports Metadata"
             output_ports.each do |k,v|
-                v.each do |key,value|
-                    s << "\t#{k.to_s}[#{key.to_s}] = #{value.to_s}\n"
+                pp.nest(2) do
+                    pp.breakable
+                    pp.text k
+                    pp.nest(2) do
+                        pp.breakable
+                        v.each do |key,value|
+                            pp.text "#{key} = #{value}"
+                        end
+                    end
                 end
             end
-            s
         end
     end
 end

@@ -33,42 +33,38 @@ Typelib.convert_from_ruby Orocos::MetaData, '/metadata/Component'  do |value, ty
     sample = typelib_type.new
     kv_class = Orocos.typelib_type_for("/metadata/KeyValue")
     io_class = Orocos.typelib_type_for("/metadata/InterfaceObject")
-    value.metadata.each do |key,value|
-        kv = kv_class.new
-        kv.key = key
-        kv.value = value
-        sample.metadata << kv
-    end
-    value.output_ports.each do |key,value|
-        io = io_class.new
-        io.name = key
-        value.each do |k,v|
-            kv = kv_class.new
-            kv.key = key
-            kv.value = value
-            io.metadata << kv
+    value.metadata.each do |k, values|
+        values.each do |v|
+            sample.metadata << kv_class.new(:key => k, :value => v)
         end
-        sample.output_ports << io
     end
-    value.properties.each do |key,value|
+    value.properties.each do |name, md|
         io = io_class.new
-        io.name = key
-        value.each do |k,v|
-            kv = kv_class.new
-            kv.key = key
-            kv.value = value
-            io.metadata << kv
+        io.name = name
+        md.each do |k, values|
+            values.each do |v|
+                io.metadata << kv_class.new(:key => k, :value => v)
+            end
         end
         sample.properties << io
     end
-    value.input_ports.each do |key,value|
+    value.output_ports.each do |name, md|
         io = io_class.new
-        io.name = key
-        value.each do |k,v|
-            kv = kv_class.new
-            kv.key = key
-            kv.value = value
-            io.metadata << kv
+        io.name = name
+        md.each do |k, values|
+            values.each do |v|
+                io.metadata << kv_class.new(:key => k, :value => v)
+            end
+        end
+        sample.output_ports << io
+    end
+    value.input_ports.each do |name, md|
+        io = io_class.new
+        io.name = name
+        md.each do |k, values|
+            values.each do |v|
+                io.metadata << kv_class.new(:key => k, :value => v)
+            end
         end
         sample.input_ports << io
     end

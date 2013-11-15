@@ -1,5 +1,5 @@
-#ifndef _OROGEN_METADATA_ 
-#define _OROGEN_METADATA_
+#ifndef OROGEN_METADATA_METADATA_HPP 
+#define OROGEN_METADATA_METADATA_HPP
 
 #include <vector>
 #include <string>

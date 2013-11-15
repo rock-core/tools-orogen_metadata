@@ -1,5 +1,6 @@
 require 'typelib'
-module Orocos
+
+module OroGen
     class MetaData
         # @return [Typelib::Metadata]
         attr_reader :metadata

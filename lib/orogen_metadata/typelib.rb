@@ -1,6 +1,6 @@
-require "metadata_types"
+require "orogen_metadata/metadata"
 
-Typelib.convert_to_ruby '/metadata/Component', Orocos::MetaData do |data|
+Typelib.convert_to_ruby '/metadata/Component', OroGen::MetaData do |data|
     res = Orocos::MetaData.new
     data.metadata.each do |value|
         res.metadata.set(value.key,value.value)
@@ -29,7 +29,7 @@ Typelib.convert_to_ruby '/metadata/Component', Orocos::MetaData do |data|
     res
 end
 
-Typelib.convert_from_ruby Orocos::MetaData, '/metadata/Component'  do |value, typelib_type|
+Typelib.convert_from_ruby OroGen::MetaData, '/metadata/Component'  do |value, typelib_type|
     sample = typelib_type.new
     kv_class = Orocos.typelib_type_for("/metadata/KeyValue")
     io_class = Orocos.typelib_type_for("/metadata/InterfaceObject")

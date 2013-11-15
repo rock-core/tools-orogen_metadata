@@ -1,5 +1,4 @@
 
-STDOUT.puts "Loading metada types"
 require "typelib/metadata"
 
 module Orocos

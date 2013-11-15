@@ -1,6 +1,4 @@
-
-require "typelib/metadata"
-
+require 'typelib'
 module Orocos
     class MetaData
         # @return [Typelib::Metadata]

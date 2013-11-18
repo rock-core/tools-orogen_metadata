@@ -5,27 +5,6 @@ require "orogen_metadata/metadata"
 require "rorocos_ext"
 
 module Orocos
-    class InputPort
-        def default_value
-            if task.metadata.input_ports[name]
-                v = task.metadata.input_ports[name].get("default")
-                return v[0] if v
-            end
-            nil
-        end
-    end
-
-    class OutputPort
-
-        def default_value
-            if task.metadata.output_ports[name]
-                v = task.metadata.output_ports[name].get("default")
-                return v[0] if v
-            end
-            nil
-        end
-    end
-
     module Spec
         class TaskContext
             attr_accessor :metadata
@@ -46,16 +25,6 @@ module Orocos
         end
 
         class ConfigurationObject
-            def scale(unit)
-                add_metadata("unit",unit)
-                self
-            end
-
-            def range(from,to)
-                add_metadata("range","#{from}:#{to}")
-                self
-            end
-
             def add_metadata(type,value)
                 if(!task.metadata.output_ports[name])
                     task.metadata.output_ports[name] = Typelib::MetaData.new
@@ -85,27 +54,6 @@ module Orocos
         end
 
         class Port
-            def unit(unit)
-                add_metadata("unit",unit)
-            end
-
-            def range(from,to)
-                add_metadata("range","#{from}:#{to}")
-            end
-
-            def default(value)
-                add_metadata("default",value)
-            end
-
-            def scale(value)
-                add_metadata("scale",value)
-            end
-
-            def range(from,to)
-                add_metadata("range_from",from)
-                add_metadata("range_to",to)
-            end
-
             def add_metadata(type,value)
                 raise "Could not add metadata to port"
             end

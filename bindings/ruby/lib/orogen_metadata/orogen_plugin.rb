@@ -31,7 +31,9 @@ module Orocos
             attr_accessor :metadata
 
             def metadata_support
-                register_extension(Orocos::Spec::MetaDataPlugin.new)
+                if !find_extension("MetaDataPlugin")
+                    register_extension(Orocos::Spec::MetaDataPlugin.new)
+                end
             end
 
             def add_metadata(key,value)
@@ -111,6 +113,10 @@ module Orocos
 
 
         class MetaDataPlugin < TaskModelExtension
+            def name
+                "MetaDataPlugin"
+            end
+
             # Entry point for the orogen registration 
             def registered_on(task_context)
                 task_context.metadata = OroGen::MetaData.new

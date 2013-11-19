@@ -1,7 +1,7 @@
 require "orogen_metadata/metadata"
 
 Typelib.convert_to_ruby '/metadata/Component', OroGen::MetaData do |data|
-    res = Orocos::MetaData.new
+    res = OroGen::MetaData.new
     data.metadata.each do |value|
         res.metadata.set(value.key,value.value)
     end

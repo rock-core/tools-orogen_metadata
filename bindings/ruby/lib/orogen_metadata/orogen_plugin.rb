@@ -1,9 +1,6 @@
 #to make the type known
 require "orogen_metadata/metadata"
 
-#Needs to extend the port interfaces
-require "rorocos_ext"
-
 module Orocos
     module Spec
         class TaskContext

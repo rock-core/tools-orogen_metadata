@@ -8,7 +8,7 @@ namespace metadata {
     struct KeyValue
     {
         KeyValue(){}
-        KeyValue(const std::string &key, const std::string &value): key(key),value(value){}
+        KeyValue(const std::string &_key, const std::string &_value): key(_key),value(_value){}
         std::string key;
         std::string value;
     };
@@ -16,7 +16,7 @@ namespace metadata {
     struct InterfaceObject
     {
         InterfaceObject(){}
-        InterfaceObject(const std::string &name):name(name){}
+        InterfaceObject(const std::string &_name):name(_name){}
         std::string name;
         std::vector<KeyValue> metadata;
     };

@@ -21,7 +21,7 @@ namespace metadata {
         std::vector<KeyValue> metadata;
     };
 
-    struct Component
+    struct TaskContext
     {
         std::vector<KeyValue> metadata;
         std::vector<InterfaceObject> properties;

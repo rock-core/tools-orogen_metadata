@@ -65,12 +65,12 @@ module Orocos
             # Entry point for the orogen registration 
             def registered_on(task_context)
                 task_context.metadata = OroGen::MetaData.new
-                task_context.property("metadata","/metadata/Component")
+                task_context.property("metadata","/metadata/TaskContext")
             end
 
             def register_for_generation(task)
                 code = Array.new
-                code << "metadata::Component md;"
+                code << "metadata::TaskContext md;"
                 task.metadata.input_ports.each do |k,v|
                     code << "{"
                     code << "metadata::InterfaceObject io(\"#{k.to_s}\");"

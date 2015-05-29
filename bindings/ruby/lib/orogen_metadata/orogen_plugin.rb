@@ -65,7 +65,7 @@ module Orocos
             # Entry point for the orogen registration 
             def registered_on(task_context)
                 task_context.metadata = OroGen::MetaData.new
-                task_context.property("metadata","/metadata/TaskContext")
+                task_context.attribute("metadata","/metadata/TaskContext")
             end
 
             def register_for_generation(task)

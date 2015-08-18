@@ -68,7 +68,7 @@ module Orocos
                 task_context.attribute("metadata","/metadata/TaskContext")
             end
 
-            def register_for_generation(task)
+            def generation_hook(task)
                 code = Array.new
                 code << "metadata::TaskContext md;"
                 task.metadata.input_ports.each do |k,v|

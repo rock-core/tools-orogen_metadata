@@ -1,6 +1,11 @@
-cmake_minimum_required(VERSION 2.6)
+cmake_minimum_required(VERSION 3.9)
+project(orogen_metadata
+        VERSION 0.1
+        DESCRIPTION "type definitions for the metadata orogen plugin")
+
 find_package(Rock)
-rock_init(orogen_metadata 1.0)
+
+rock_init()
 rock_standard_layout()
 include(RockRuby)
 rock_ruby_library(bindings/ruby/lib/orogen_metadata)
